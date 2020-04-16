@@ -12,8 +12,8 @@ public class CardMain {
 		
 		Card c1 = new Card("Heart",7);
 		
-		Card c2 = new Card();
-		c2.kind="Triangle";
+		Card c2 = new Card(); // 3번
+		c2.kind="Triangle"; // 이부분이랑 아래를 지우고 위 파라미터에 값을넣어야함
 		c2.number=5;
 		
 		System.out.println("첫번째 카드의 모양은"+c1.kind+"이며 번호는"+c1.number+"이며 높이는"+c1.height+"길이는"+c1.width);

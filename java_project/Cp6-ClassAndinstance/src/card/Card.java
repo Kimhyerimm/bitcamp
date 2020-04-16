@@ -8,13 +8,13 @@ public class Card {
 	String kind;
 	int number;
 	
-	
-	Card(){
-		
-		
+//	
+	Card(){ // 2번
+//		
+//		
 	}
-	
-	Card(String type,int num){
+//	
+	Card(String type,int num){ // 1번 
 		kind=type;
 		number=num;
 	}
