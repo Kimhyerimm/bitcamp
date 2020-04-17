@@ -1,13 +1,41 @@
 package fruit;
 
+/*작성자 : 김보겸
+수정일 : 2020.04.17
+수정내용 : 생성자를 통한 변수 초기화*/
+
 public class FruitBuyer {
 
 	//속성 : 변수
 	// 보유한 나의 돈
 	// 사과의 개수
 	
-	int b_myMoney=10000; // 구매자 현재 돈
-	int b_numOfApple=0; // 구매자 현재 사과 개수
+//	int b_myMoney=10000; // 구매자 현재 돈
+//	int b_numOfApple=0; // 구매자 현재 사과 개수
+
+	//변수의 명시적 초기화 변경
+	int b_myMoney; 
+	int b_numOfApple; 
+	
+	//생성자
+	FruitBuyer(){
+		b_myMoney=5000;
+		b_numOfApple=0;
+	}
+	
+	
+	FruitBuyer(int money,int apple){
+		b_myMoney=money;
+		b_numOfApple=apple;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	// 기능 :메서드
 	// 1. 셀러찾기[받기]
