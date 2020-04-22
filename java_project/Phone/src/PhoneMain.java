@@ -7,44 +7,38 @@ public class PhoneMain {
 		
 //		Phonelnfor version1 = new Phonelnfor("아무개", "119112114", "951124");
 //		Phonelnfor version2 = new Phonelnfor("홍길동", "010112");
-		Phonelnfor version3 = new Phonelnfor();
+		Phonelnfor version = new Phonelnfor();
 		
+		
+
 //		version1.showInfo();
 //		version2.showInfo();
 
-//		version3.inPut();
-		
-		
 
 		
-		void inPut() {
-			
-			while(true) {
+	while(true) {
 			
 			Scanner sc = new Scanner(System.in);
 				
 			System.out.println("이름을 입력하세요 :");
-			this.name = sc.nextLine();
+			version.name = sc.nextLine();
 			
 			System.out.println("번호를 입력하세요 :");
-			this.phoneNumber = sc.nextLine();
+			version.phoneNumber = sc.nextLine();
 			
 			System.out.println("생일을 입력하세요 :");
-			this.birthday = sc.nextLine();
+			version.birthday = sc.nextLine();
 			
 			
 			
-			showInfo();
+			version.showInfo();
 			
 			}
+					
+			
 					
 		}
 		
 		
-		
-		
-		
-		
 	}
 
-}
