@@ -26,11 +26,11 @@ public class PhoneBookMain {
 			switch(selectNum) {
 			case 1 : 
 				//사용자의 입력 데이터를 인스턴스 생성
-//				PhoneInfor info = manager.createInstace();
+				//PhoneInfor info = manager.createInstace();
 				
 				// 정보를 배열에 저장
-//				manager.addInfo(info);
-				manager.addInfo();
+			//	manager.addInfo(info);
+				manager.addInfo(); // 29, 32랑 똑같은 값을받는데 29,32는 2줄써야하고 폰북매니저에서 45번줄 매개변수로 통해서 처리됨 
 				break;
 			case 2 :
 				// 이름으로 검색

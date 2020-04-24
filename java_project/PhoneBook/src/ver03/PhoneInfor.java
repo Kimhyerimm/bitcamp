@@ -32,7 +32,7 @@ public class PhoneInfor {
 		
 	}
 	
-	PhoneInfor(String name, String phoneNumber){
+	PhoneInfor(String name, String phoneNumber){ 
 		//this.name=name;
 		//this.phoneNumber=phoneNumber;
 		this(name,phoneNumber,"입력값이 없습니다."); // 마지막에 null쓰면 if문써야하는데 바로 처리가능
