@@ -56,3 +56,5 @@ class Ambulance extends Car{
 		
 	}
 }
+}
+
