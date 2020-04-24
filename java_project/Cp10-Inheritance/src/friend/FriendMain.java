@@ -18,8 +18,9 @@ public class FriendMain {
 			
 			int choice = handler.kb.nextInt();
 			
-//			handler.kb.nextLine(); // 앞의 버퍼를 클리어 하는 목적??
-//			
+			handler.kb.nextLine(); // 앞의 버퍼를 클리어 하는 목적??
+			// 위에 주석처리해서해보니까 이름을 바로건너띈다음에 저장됨
+			
 			switch(choice) {
 			case 1:
 				handler.addFriend(choice);
