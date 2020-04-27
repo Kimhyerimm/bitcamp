@@ -1,5 +1,6 @@
 package ver04;
 
+
 import java.util.Scanner;
 
 //PhoneInfo 타입의 배열로 친구들의 정보를 저장, 수정, 삭제, 검색, 출력
@@ -42,17 +43,17 @@ public class PhoneBookManager {
 	}
 	
 	// 저장 메소드
-	void createInfo() { 
+	void createInfo(int select) { 
 
 		System.out.println("1. 일반 2. 대학 3. 회사 4. 동호회");
 
 		System.out.println("입력하고자 하는 번호를 입력하세요 :" );
 		
 //		int select = kb.nextInt();
-//		kb.nextLine();
+		kb.nextLine();
 		
 		// 사용자 선택 번호
-		int select =Integer.parseInt(kb.nextLine()); // 49,50번을 한번에 통합하는법
+//		int select =Integer.parseInt(kb.nextLine()); // 49,50번을 한번에 통합하는법
 		
 		if (! (select>0 && select<5)) {
 			System.out.println("정상적인 메뉴 선택이 아닙니다. \n");
@@ -206,10 +207,8 @@ for(int i=0; i<numOfInfo; i++) {
 			
 			
 			// 저장된 인스턴스가 : 기본인지 대학,회사,동호회 인지 
-			if(books[index] instanceof PhoneInfor) {
-				info=new PhoneInfor(editname, phoneNumber, addr, email);
-			}
-			else if(books[index] instanceof PhoneUnivInfor) {
+			
+			if(books[index] instanceof PhoneUnivInfor) {
 				System.out.println("전공을 입력해주세요 : ");
 				String major = kb.nextLine();
 				System.out.println("학년을 입력해주세요 : ");
@@ -232,6 +231,8 @@ for(int i=0; i<numOfInfo; i++) {
 				String nickName=kb.nextLine();
 				info=new PhoneCafeInfo(editname, phoneNumber, addr, email, cafeName, nickName);
 			}
+			else if(books[index] instanceof PhoneInfor) {
+				info=new PhoneInfor(editname, phoneNumber, addr, email);
 			//배열에 새로운 인스턴스를 저장
 			books[index]=info;
 			
