@@ -9,7 +9,7 @@ package friend;
 
 
 
-public class Friend {
+public abstract class Friend {
 
 	String name; // 친구의 이름
 	String phoneNumber; // 친구의 번호 
@@ -32,11 +32,13 @@ public class Friend {
 	}
 	
 	// 하위클래스 값을 추가하기위한 오버라이딩 메소드
-	void showData() {
-		
-	}
-	
-	
+//	void showData() {
+//		
+//	}
+
+	// 추상 메서드 생성 
+	abstract void showData();
+
 	
 	
 	
