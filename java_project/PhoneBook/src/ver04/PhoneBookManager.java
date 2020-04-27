@@ -43,13 +43,13 @@ public class PhoneBookManager {
 	}
 	
 	// 저장 메소드
-	void createInfo(int select) { 
+	void createInfo() { 
 
 		System.out.println("1. 일반 2. 대학 3. 회사 4. 동호회");
 
 		System.out.println("입력하고자 하는 번호를 입력하세요 :" );
 		
-//		int select = kb.nextInt();
+		int select = kb.nextInt();
 		kb.nextLine();
 		
 		// 사용자 선택 번호
@@ -104,12 +104,14 @@ public class PhoneBookManager {
 //			default :
 //				System.out.println("정상적인 메뉴 선택이 아닙니다. \n");
 //				return ;
-// 55~57줄로 대체
+// 58~60줄로 대체
+				
 		} // switch 끝
+		
 		// 2-2) 사용자로부터 받은 데이터로 인스턴스 생성
 		// 2-3) 생성된 인스턴스를 배열에 저장
-		
 		addInfo(info);
+		
 	} // createInfo 끝
 	
 	
@@ -243,5 +245,5 @@ for(int i=0; i<numOfInfo; i++) {
 	
 	
 	
-	
+	}	
 }
