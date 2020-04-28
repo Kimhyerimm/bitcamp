@@ -12,7 +12,7 @@ public class UnivFriend extends Friend{
 		this.grade=grade;
 	}
 	
-	void showData() {
+	public void showData() {
 		showBasicInfo();
 	System.out.println("전공 :" +this.major);
 	System.out.println("학년 :"+this.grade);

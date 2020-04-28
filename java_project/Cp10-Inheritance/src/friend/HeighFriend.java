@@ -11,7 +11,7 @@ public class HeighFriend extends Friend {
 	}
 
 	// 하위클래스[고딩친구] 직업 추가부분
-	void showData() {
+	public void showData() {
 		showBasicInfo();
 		System.out.println("직업 : "+this.work);
 	}
