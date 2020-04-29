@@ -1,7 +1,11 @@
 package ver05;
 
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import ver05.exception.BadNumberException;
+import ver05.exception.StringEmptyException;
 
 //PhoneInfo 타입의 배열로 친구들의 정보를 저장, 수정, 삭제, 검색, 출력
 public class PhoneBookManager {
@@ -29,7 +33,7 @@ public class PhoneBookManager {
 //	}	
 	
 	// 생성자를 통해서 배열 생성, 요소 개수 초기화
-	 PhoneBookManager(int num) {
+	private  PhoneBookManager(int num) {
 		// 배열의 생성 
 		books= new PhoneInfor[num];
 		// 요소 개수의 초기화
@@ -37,6 +41,13 @@ public class PhoneBookManager {
 		kb = new Scanner(System.in);
 	}
 	
+	 private static PhoneBookManager manager = new PhoneBookManager(100);
+	
+	 public static PhoneBookManager getInstance() {
+	 return manager;
+	 }
+	
+	 
 	// 2. 배열에 정보 저장
 	// 2-1) 배열에 넣는 처리
 	// 2-2) 사용자로부터 받은 데이터로 인스턴스 생성
@@ -52,13 +63,56 @@ public class PhoneBookManager {
 	// 저장 메소드
 	void createInfo() { 
 
-		System.out.println("1. 일반 2. 대학 3. 회사 4. 동호회");
+		
 //		System.out.println(" "+Menuinter.UNIV+". 대학 "+Menuinter.COMPANY+". 회사 "+Menuinter.CAFE+". 동호회");
-		System.out.println("입력하고자 하는 번호를 입력하세요 :" );
 		
-		int select = kb.nextInt();
-		kb.nextLine();
 		
+		int select=0;
+		
+		while(true) {
+			
+			System.out.println(" 1. 대학 2. 회사 3. 동호회");
+			System.out.println("입력하고자 하는 번호를 입력하세요 :" );
+			
+			try {
+			select = kb.nextInt();
+			
+			// 정상범위 1~3
+			if ( ! (select >=1 && select <=3 )) {
+				BadNumberException e = new BadNumberException();
+				
+				//강제 예외발생
+				throw e;
+			}
+			}
+			
+			
+			catch(InputMismatchException e) {
+				System.out.println("숫자를 입력하세요");
+//				manager.kb.nextLine(); 
+				// 위에주석처리하면 아래 finally 추가 해줘야함 한칸띄워야하니까
+				continue;
+			} 
+			
+			catch(BadNumberException e) {
+				System.out.println("메뉴범위를 벗어난 숫자입니다 다시입력하세요");
+				continue;
+			}
+			
+			
+			catch(Exception e) {  // 그외 나머지 모든 에러는 아래로처리
+				System.out.println("잘못된 메뉴입니다");
+//				manager.kb.nextLine(); 
+				// 위에주석처리하면 아래 finally 추가 해줘야함 한칸띄워야하니까
+				continue;
+			} // 25~ 30줄 20~ 24랑 똑같은데 오류범위를 더 넓힌거임 Exception아래 inputMis~~~있음
+			finally {
+				manager.kb.nextLine();
+			}
+			
+			break;
+			
+		}
 		// 사용자 선택 번호
 //		int select =Integer.parseInt(kb.nextLine()); // 49,50번을 한번에 통합하는법
 		
@@ -68,32 +122,60 @@ public class PhoneBookManager {
 		}
 		
 		// 2-1-1) 기본정보 수집 : 이름, 번호 , 주소 , 이메일
+		PhoneInfor info = null;
+		String name=null, phoneNumber=null, addr=null, email=null;
 		
+		while(true) {
+			
 		System.out.println("이름을 입력하세요 :");
-		String name=kb.nextLine();
+		name=kb.nextLine();
 		System.out.println("번호를 입력하세요 :");
-		String phoneNumber=kb.nextLine();
+		phoneNumber=kb.nextLine();
 		System.out.println("주소를 입력하세요 :");
-		String addr=kb.nextLine();
+		addr=kb.nextLine();
 		System.out.println("이메일을 입력하세요 :");
-		String email=kb.nextLine();
+		email=kb.nextLine();
 		
-		 PhoneInfor info = null;
+		try {
+		if(name.trim().isEmpty()|| phoneNumber.trim().isEmpty() || addr.trim().isEmpty() || email.trim().isEmpty())
+			// trim.isEmpty 공백제외후 empty
+		{
+			StringEmptyException e = new StringEmptyException();
+			throw e;
+			
+		}
+		} // try 끝
+		
+		catch (StringEmptyException e) {
+			System.out.println("기본 정보는 공백없이 모두 입력하세요 ");
+			System.out.println("다시 입력해주세요 \n");
+			continue;
+		}
+		
+		break ;
+		} // while 끝
+		
 		
 		switch(select) {
-			case 1: // 2-1-2) 기본 클래스로 인스턴스 생성
-	
-				 info = new PhoneInfor(name, phoneNumber, addr, email);
-				break;
-			case 2:// 2-1-3) 대학 클래스로 인스턴스 생성
+//			case 1: // 2-1-2) 기본 클래스로 인스턴스 생성
+//	
+//				 info = new PhoneInfor(name, phoneNumber, addr, email);
+//				break;
+			case MenuNum.UNIV:// 2-1-3) 대학 클래스로 인스턴스 생성
 //		case Menuinter.UNIV :
 				System.out.println("전공을 입력하세요 : ");
 				String major=kb.nextLine();
 				System.out.println("학년을 입력하세요 : ");
 				String grade = kb.nextLine();
+				
 				info = new PhoneUnivInfor(name, phoneNumber, addr, email, major, grade);
 				break;
-			case 3: // 2-1-4) 회사 클래스로 인스턴스 생성
+				
+				
+				
+				
+				
+			case MenuNum.COMPANY: // 2-1-4) 회사 클래스로 인스턴스 생성
 //		case Menuinter.COMPANY :
 				System.out.println("회사를 입력하세요 : ");
 				String company = kb.nextLine();
@@ -103,7 +185,7 @@ public class PhoneBookManager {
 				String job = kb.nextLine();
 				info = new PhoneCompanyInfo(name, phoneNumber, addr, email, company, dept, job);
 				break;
-			case 4: // 2-1-5) 동호회 클래스로 인스턴스 생성
+			case MenuNum.CAFE: // 2-1-5) 동호회 클래스로 인스턴스 생성
 //		case Menuinter.CAFE :
 				System.out.println("동호회 이름을 입력하세요 :");
 				String cafeName=kb.nextLine();
@@ -111,14 +193,15 @@ public class PhoneBookManager {
 				String nickName=kb.nextLine();
 				info = new PhoneCafeInfo(name, phoneNumber, addr, email, cafeName, nickName);
 				break;
+
 				
 //			default :
 //				System.out.println("정상적인 메뉴 선택이 아닙니다. \n");
 //				return ;
 // 58~60줄로 대체
 				
-		} // switch 끝
-		
+	
+		} // while 끝
 		// 2-2) 사용자로부터 받은 데이터로 인스턴스 생성
 		// 2-3) 생성된 인스턴스를 배열에 저장
 		addInfo(info);
@@ -128,7 +211,7 @@ public class PhoneBookManager {
 	
 	
 	// 3. 배열에 저장된 정보 출력
-	void showAllInfo() {
+	public void showAllInfo() {
 		// for each 반복 : 현재 프로그램에서는 사용불가 수정하다가 겹쳐야하는데 공백까지갈수있으므로
 		// for 반복문 : 반복의 횟수 지정이 가능 numofInfo
 		
@@ -244,8 +327,8 @@ for(int i=0; i<numOfInfo; i++) {
 				String nickName=kb.nextLine();
 				info=new PhoneCafeInfo(editname, phoneNumber, addr, email, cafeName, nickName);
 			}
-			else if(books[index] instanceof PhoneInfor) {
-				info=new PhoneInfor(editname, phoneNumber, addr, email);
+//			else if(books[index] instanceof PhoneInfor) {
+//				info=new PhoneInfor(editname, phoneNumber, addr, email);
 			//배열에 새로운 인스턴스를 저장
 			books[index]=info;
 			
@@ -259,4 +342,4 @@ for(int i=0; i<numOfInfo; i++) {
 	}
 
 	
-}
+

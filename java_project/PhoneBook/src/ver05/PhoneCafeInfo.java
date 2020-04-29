@@ -12,9 +12,9 @@ public class PhoneCafeInfo extends PhoneInfor {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	 void showAllInfo() {
-		super.showBasicInfo();
+	
+	 public void showAllInfo() {
+		showBasicInfo();
 		System.out.println("동호회 이름은 :"+this.cafeName);
 		System.out.println("동호회 닉네임은 :"+this.nickName);
 	}

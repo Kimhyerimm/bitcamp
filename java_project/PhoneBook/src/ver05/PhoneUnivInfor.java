@@ -17,7 +17,7 @@ public class PhoneUnivInfor extends PhoneInfor{
 	
 // 오버라이딩을 통해 새로생긴 메이저, 그레이드 출력추가
 public void showAllInfo() { 
-		super.showBasicInfo();
+		showBasicInfo();
 		System.out.println("친구의 전공은 : "+this.major);
 		System.out.println("친구의 학년은 : "+this.grade);
 	}

@@ -6,7 +6,7 @@ package ver05;
 
 //public class PhoneInfor { // 아래 변수 프라이빗으로 바꿔주자 바꾸면 매니저에서 서치인덱스도 books[i]를
 	// 못쓰니까 폰인포에 체크네임 메소드 추가해서 써야함
-public  class PhoneInfor {
+public abstract  class PhoneInfor implements Info {
 	String name; // 친구의 이름
 	String phoneNumber; // 친구의 번호
 	String addr; // 친구의 주소
@@ -27,15 +27,19 @@ public  class PhoneInfor {
 		System.out.println("친구의 주소는 : "+ this.addr);
 		System.out.println("친구의 이메일은 : "+ this.email);
 	}
+
 	
+	
+	
+	//04 29 수정내용 : interface 구현으로 메서드 오버라이딩 주석 
 	
 	// 전체 정보 출력 메서드 
 	// 상속 후 오버라이딩을 통해 재 구성
-	void showAllInfo() { 
-		showBasicInfo();
-//		
-	}
-	
+//	void showAllInfo() { 
+//		showBasicInfo();
+////		
+//	}
+//	
 
 	
 }
