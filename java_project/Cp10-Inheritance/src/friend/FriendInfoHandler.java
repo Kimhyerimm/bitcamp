@@ -58,6 +58,7 @@ private static FriendInfoHandler handler = new FriendInfoHandler(100);
 //		myFriends = new Friend[num]; 
 //		numOfFriend=0;
 		
+		// ArrayList 인스턴스 생성
 		myFriends = new ArrayList<Friend>();
 		kb=new Scanner(System.in);
 	}
@@ -74,8 +75,11 @@ private static FriendInfoHandler handler = new FriendInfoHandler(100);
 	void addFriendInfo(Friend f) {
 		// 배열에 저장
 		//myFriends[]=f; -> myFriends[numOfFriend]=f;
-		myFriends[numOfFriend]=f;
-		numOfFriend++;
+//		myFriends[numOfFriend]=f;
+//		numOfFriend++;
+		
+		myFriends.add(f);
+		
 	}
 	
 	
@@ -127,8 +131,8 @@ private static FriendInfoHandler handler = new FriendInfoHandler(100);
 	// 친구 정보의 기본 정보 출력 기능
 	void showAllSimpleData() {
 		System.out.println("=======친구의 기본 정보를 출력합니다.========");
-		for(int i=0; i<numOfFriend; i++) {
-			myFriends[i].showBasicInfo();
+		for(int i=0; i<myFriends.size(); i++) {
+			myFriends.get(i).showBasicInfo();
 			System.out.println("----------------------------");
 		}
 	}
@@ -137,8 +141,8 @@ private static FriendInfoHandler handler = new FriendInfoHandler(100);
 	// 친구 정보 상세 정보 출력 기능
 	void showAllData() {
 		System.out.println("친구의 모든 정보를 출력합니다.==========");
-		for(int i=0; i<numOfFriend; i++) {
-			myFriends[i].showData(); // 이부분이 오버라이딩 출력부분
+		for(int i=0; i<myFriends.size(); i++) {
+			myFriends.get(i).showData(); // 이부분이 오버라이딩 출력부분
 			System.out.println("-------------------------");
 		}
 		
