@@ -1,8 +1,8 @@
 package ex;
 
-import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
+
 
 public class LinkedListTest {
 
@@ -21,7 +21,7 @@ public class LinkedListTest {
 		list.add(new Integer(10));
 		list.add(new Integer(20));
 		list.add(new Integer(30));
-		list.add(40);
+	
 		System.out.println(list);
 		
 		// 데이터의 참조 
@@ -32,13 +32,26 @@ public class LinkedListTest {
 			// 저장된값 10,20,30,40 순서대로출력함
 		}
 		
-		System.out.println("---------------");
+		System.out.println("-----remove----------");
 		// 데이터의 삭제
 		list.remove(1);
 		for(int i=0; i<list.size(); i++) {
 			System.out.println(list.get(i));
 		
+		} // for 끝
+		
+		
+		System.out.println("Iterator 이용한 모든 요소 출력");
+		System.out.println("---------------");
+		Iterator<Integer> itr = list.iterator();	
+		
+		while ( itr.hasNext() ) { // 커서 시작
+			int num = itr.next(); // num = 10
+			System.out.println(num);
 		}
-	}
+		
+		
+		
+	} // main 끝 
 
 }
