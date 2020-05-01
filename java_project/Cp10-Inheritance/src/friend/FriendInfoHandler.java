@@ -1,5 +1,6 @@
 package friend;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FriendInfoHandler {
@@ -15,9 +16,14 @@ public class FriendInfoHandler {
 2. interface 기반의 상수 표현, 메뉴표현
 
 3. interface -> 추상클래스 -> 상속 관계 구조로 변경
-
 21~ 25줄추가 프렌드메인 8번줄 추가
 */
+
+ // 2020. 05. 01
+ // 배열에 저장 -> List 이용
+
+
+
 private static FriendInfoHandler handler = new FriendInfoHandler(100);
 	
 	public static FriendInfoHandler getInstance() {
@@ -35,14 +41,24 @@ private static FriendInfoHandler handler = new FriendInfoHandler(100);
 	// 친구정보 상세 정보 출력
 	
 	
-	Friend[] myFriends; // Friend타입의 배열 선언
-	int numOfFriend; // 저장된 친구의 정보 개수
+//	private Friend[] myFriends; // Friend타입의 배열 선언
+	
+	//List 참조변수
+	private ArrayList<Friend> myFriends;
+	
+//	 private int numOfFriend; // 저장된 친구의 정보 개수
 	Scanner kb;
+	
+	
+	
+	
 	
 	//초기화 : 저장공간(사이즈) 크기를 받아서 배열 생성
 	private FriendInfoHandler(int num) {
-		myFriends = new Friend[num]; 
-		numOfFriend=0;
+//		myFriends = new Friend[num]; 
+//		numOfFriend=0;
+		
+		myFriends = new ArrayList<Friend>();
 		kb=new Scanner(System.in);
 	}
 
