@@ -1,0 +1,10 @@
+﻿public void showTicket() {
+		try {
+			ticket.showTicket();	
+		} catch(NullPointerException e) {
+			System.out.println(" 예매된 내역이 없습니다 예매를 하세요.");
+			tm.creatTicket(this);
+			
+		}
+		
+	}
